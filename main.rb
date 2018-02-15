@@ -1,7 +1,7 @@
 require 'colorize'
 require_relative 'git'
 
-class Main
+class StartPoint
   include Git
 
   def self.menu
@@ -27,4 +27,4 @@ class Main
 
 end
 
-Main.menu
+StartPoint.menu
