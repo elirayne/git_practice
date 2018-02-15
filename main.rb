@@ -1,25 +1,27 @@
 require 'colorize'
+require_relative 'git'
 
-def put_git(cmd)
-  puts 'git #{cmd} -h'
-  menu
-end
+class Main
+  include Git
 
-def menu
-  puts '1: Enter git command'.colorize(:cyan)
-  puts '2: Exit'.colorize(:cyan)
-  choice = gets.to_i
+  def self.menu
+    puts 'MAIN MENU'.colorize(:cyan)
+    puts '1: Enter git command'.colorize(:cyan)
+    puts '2: Exit'.colorize(:cyan)
+    choice = gets.to_i
     case choice
-      when 1
-        puts 'Enter git command'.colorize(:cyan)
-        puts_git(gets.strip)
-        menu
-      when 2
-        exit
-      else
-        puts 'Invalid choice'.colorize(:red)
-        menu
-    end 
+    when 1
+      puts 'Enter git command'.colorize(:green)
+      Git.puts_git(gets.strip)
+    when 2
+      exit
+    else
+      puts 'Invalid choice'.colorize(:red)
+    end
+
+    menu
+  end
+
 end
 
-menu
+Main.menu
